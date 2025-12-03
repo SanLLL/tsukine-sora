@@ -1,16 +1,19 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Trebuchet+MS&family=Cooper+Black&display=swap');
+@font-face {
+  font-family: 'GalaxySprinkle';
+  src: url('../fonts/GalaxySprinkle-1G9LZ.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   margin: 0;
-  font-family: 'Cooper Black', 'Trebuchet MS', sans-serif;
+  font-family: 'GalaxySprinkle', 'Trebuchet MS', sans-serif;
   background: radial-gradient(circle at 50% 10%, #2b3370, #0b0f26 60%);
   color: #dfe6ff;
   overflow-x: hidden;
   position: relative;
 }
 
-/* ✦ Animated stars */
 .stars {
   position: fixed;
   top: 0;
@@ -37,7 +40,6 @@ header {
   z-index: 1;
 }
 
-/* ✦ Glowing halo behind title */
 header::before {
   content: "";
   position: absolute;
