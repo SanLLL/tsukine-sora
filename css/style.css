@@ -12,6 +12,19 @@ body {
   color: #dfe6ff;
   overflow-x: hidden;
   position: relative;
+  animation: galaxyBG 30s infinite alternate;
+}
+
+@keyframes galaxyBG {
+  0% {
+    background: radial-gradient(circle at 50% 10%, #2b3370, #0b0f26 60%);
+  }
+  50% {
+    background: radial-gradient(circle at 60% 20%, #1c1f44, #05071c 70%);
+  }
+  100% {
+    background: radial-gradient(circle at 40% 15%, #2b3370, #0b0f26 60%);
+  }
 }
 
 .stars {
@@ -22,15 +35,30 @@ body {
   height: 100%;
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="3" height="3"><circle cx="1.5" cy="1.5" r="1.5" fill="white" opacity="0.8"/></svg>');
   background-size: 3px 3px;
-  animation: twinkle 4s infinite alternate;
+  animation: twinkle 4s infinite alternate, driftStars 60s infinite linear;
   opacity: 0.15;
   pointer-events: none;
   z-index: -1;
 }
 
-@keyframes twinkle {
-  from { opacity: 0.1; }
-  to { opacity: 0.25; }
+.stars::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="5" height="5"><circle cx="2.5" cy="2.5" r="2.5" fill="white" opacity="0.3"/></svg>');
+  background-size: 50px 50px;
+  animation: twinkleBig 6s infinite alternate, driftStars 90s infinite linear;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes twinkle { from { opacity: 0.1; } to { opacity: 0.25; } }
+@keyframes twinkleBig { from { opacity: 0.1; } to { opacity: 0.3; } }
+@keyframes driftStars {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(20px,-15px); }
+  100% { transform: translate(-10px,20px); }
 }
 
 header {
@@ -55,17 +83,16 @@ header::before {
   z-index: -1;
 }
 
-@keyframes pulse {
-  0% { opacity: 0.5; }
-  50% { opacity: 0.9; }
-  100% { opacity: 0.5; }
-}
+@keyframes pulse { 0% { opacity:0.5;} 50% {opacity:0.9;} 100% {opacity:0.5;} }
 
-h1 {
+header h1 {
   font-size: 3rem;
   color: #b7cfff;
   text-shadow: 0 0 15px rgba(160,200,255,0.7);
+  animation: bounceHeader 5s infinite ease-in-out;
 }
+
+@keyframes bounceHeader { 0%,100% {transform:translateY(0);} 50% {transform:translateY(-8px);} }
 
 nav {
   display: flex;
@@ -84,8 +111,14 @@ nav a {
   transition: 0.3s;
 }
 nav a:hover {
-  border-bottom: 2px solid #8acbff;
   color: #b8d8ff;
+  text-shadow: 0 0 10px #8acbff, 0 0 20px #7ab4ff;
+  border-bottom: 2px solid #8acbff;
+  animation: neonGlow 1.5s infinite alternate;
+}
+@keyframes neonGlow {
+  0% { text-shadow: 0 0 5px #8acbff,0 0 15px #7ab4ff; }
+  100% { text-shadow: 0 0 15px #b8d8ff,0 0 25px #9fe0ff; }
 }
 
 .section {
@@ -98,6 +131,13 @@ nav a:hover {
   backdrop-filter: blur(8px);
   box-shadow: 0 0 25px rgba(120,150,255,0.15);
   margin-bottom: 50px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.section:hover {
+  box-shadow: 0 0 40px rgba(180,210,255,0.35);
+  transform: translateY(-3px);
 }
 
 .section h2 {
@@ -107,21 +147,53 @@ nav a:hover {
   text-shadow: 0 0 10px rgba(100,160,255,0.5);
 }
 
+.section::after {
+  content: "✨";
+  position: absolute;
+  font-size: 1.2rem;
+  top: 10%;
+  left: 80%;
+  opacity: 0.3;
+  animation: sparkle 3s infinite alternate;
+}
+@keyframes sparkle {
+  0% { transform: scale(0.5) rotate(0deg); opacity:0.2; }
+  50% { transform: scale(1) rotate(180deg); opacity:0.7; }
+  100% { transform: scale(0.5) rotate(360deg); opacity:0.2; }
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
-img {
+.gallery-grid img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   border-radius: 15px;
   box-shadow: 0 0 25px rgba(140,170,255,0.25);
   transition: transform 0.4s, box-shadow 0.3s;
 }
-img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 35px rgba(160,190,255,0.4);
+
+.gallery-grid img:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 0 45px rgba(160,190,255,0.5);
+}
+
+.gallery-grid img::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  border-radius: 20px;
+  background: radial-gradient(circle, rgba(120,180,255,0.15), transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
 }
 
 footer {
