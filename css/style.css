@@ -7,24 +7,24 @@
 
 body {
   margin: 0;
-  font-family: 'GalaxySprinkle', 'Trebuchet MS', sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #e0e8ff;
+  line-height: 1.6;
   background: radial-gradient(circle at 50% 10%, #2b3370, #0b0f26 60%);
-  color: #dfe6ff;
   overflow-x: hidden;
   position: relative;
   animation: galaxyBG 30s infinite alternate;
 }
 
+p, li {
+  font-size: 1.1rem;
+  text-shadow: 0 0 4px rgba(180,200,255,0.25);
+}
+
 @keyframes galaxyBG {
-  0% {
-    background: radial-gradient(circle at 50% 10%, #2b3370, #0b0f26 60%);
-  }
-  50% {
-    background: radial-gradient(circle at 60% 20%, #1c1f44, #05071c 70%);
-  }
-  100% {
-    background: radial-gradient(circle at 40% 15%, #2b3370, #0b0f26 60%);
-  }
+  0% { background: radial-gradient(circle at 50% 10%, #2b3370, #0b0f26 60%); }
+  50% { background: radial-gradient(circle at 60% 20%, #1c1f44, #05071c 70%); }
+  100% { background: radial-gradient(circle at 40% 15%, #2b3370, #0b0f26 60%); }
 }
 
 .stars {
@@ -85,6 +85,10 @@ header::before {
 
 @keyframes pulse { 0% { opacity:0.5;} 50% {opacity:0.9;} 100% {opacity:0.5;} }
 
+header h1, header p {
+  font-family: 'GalaxySprinkle', 'Trebuchet MS', sans-serif;
+}
+
 header h1 {
   font-size: 3rem;
   color: #b7cfff;
@@ -103,6 +107,7 @@ nav {
   position: relative;
 }
 nav a {
+  font-family: 'GalaxySprinkle', 'Trebuchet MS', sans-serif;
   color: #9fbcff;
   font-size: 1.2rem;
   text-decoration: none;
@@ -141,6 +146,7 @@ nav a:hover {
 }
 
 .section h2 {
+  font-family: 'GalaxySprinkle', 'Trebuchet MS', sans-serif;
   border-left: 6px solid #7ab4ff;
   padding-left: 12px;
   margin-bottom: 20px;
@@ -166,12 +172,14 @@ nav a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  justify-items: center;
 }
 
 .gallery-grid img {
   position: relative;
   z-index: 1;
   width: 100%;
+  max-width: 300px;
   border-radius: 15px;
   box-shadow: 0 0 25px rgba(140,170,255,0.25);
   transition: transform 0.4s, box-shadow 0.3s;
