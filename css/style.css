@@ -156,6 +156,35 @@ p, li {
   box-shadow: 0 0 45px rgba(170,200,255,0.55);
 }
 
+.download-box {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.download-btn {
+  padding: 14px 32px;
+  font-size: 1.2rem;
+  font-family: 'GalaxySprinkle', sans-serif;
+  color: #e3ebff;
+  background: rgba(70, 120, 255, 0.55);
+  border: 2px solid rgba(150, 190, 255, 0.5);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  box-shadow: 0 0 22px rgba(150,180,255,0.35);
+  transition: 0.25s ease;
+}
+
+.download-btn:hover {
+  background: rgba(120,160,255,0.7);
+  box-shadow: 0 0 32px rgba(170,200,255,0.65);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.download-btn:active {
+  transform: scale(0.92);
+}
+
 
 footer {
   text-align: center;
@@ -164,3 +193,4 @@ footer {
   opacity: 0.75;
   margin-bottom: 20px;
 }
+
