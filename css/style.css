@@ -12,6 +12,19 @@ body {
   line-height: 1.6;
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("img/galaxy.png") center/cover no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -1;
+}
+
 .stars {
   position: fixed;
   inset: 0;
@@ -203,5 +216,6 @@ footer {
   opacity: 0.75;
   margin-bottom: 20px;
 }
+
 
 
