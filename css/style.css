@@ -185,6 +185,16 @@ p, li {
   transform: scale(0.92);
 }
 
+.fanart-card {
+  text-align: center;
+}
+
+.fan-credit {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
 
 footer {
   text-align: center;
@@ -193,4 +203,5 @@ footer {
   opacity: 0.75;
   margin-bottom: 20px;
 }
+
 
